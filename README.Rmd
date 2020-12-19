@@ -1,0 +1,58 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Metaan
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of Metaan package is to help user to compute a Meta-Analysis of Published Epidemiological Studies.
+
+## Description: 
+This package helps to combine estimates from published individual studies and provide a summarized or a pooled estimate of evidence. It makes use of statistical methods of meta-analysis computation such as the fixed effect model and the random effect model. These methods are ready for risk estimates (e.g relative risk (RR), odds ratio (OR) and hazard ratio (HR)) meta-analyses but are improved using the alternative method of Richardson et al 2020 for the computation of excess relative risk (ERR) estimates metanalyses.
+
+
+## Installation
+
+You can install the released version of Metaan from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("Metaan")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(Metaan)
+## basic example code
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
