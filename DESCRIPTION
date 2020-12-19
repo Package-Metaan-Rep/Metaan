@@ -37,3 +37,5 @@ Imports:
       stats
 Suggests: 
     testthat
+URL: https://github.com/Package-Metaan-Rep/Metaan
+BugReports: https://github.com/Package-Metaan-Rep/Metaan/issues
