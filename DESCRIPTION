@@ -36,6 +36,9 @@ Imports:
     magrittr,
       stats
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 URL: https://github.com/Package-Metaan-Rep/Metaan
 BugReports: https://github.com/Package-Metaan-Rep/Metaan/issues
+VignetteBuilder: knitr

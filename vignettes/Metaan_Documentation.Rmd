@@ -1,0 +1,23 @@
+---
+title: "Meta-analysis of estimates from published epidemilogical studies"
+author: "Antoine Kossi D. ABALO, antoine.kossi@hotmail.com"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Metaan_Documentation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Metaan)
+```
+
+
+
