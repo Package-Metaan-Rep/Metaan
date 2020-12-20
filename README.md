@@ -5,8 +5,11 @@
 
 <!-- badges: start -->
 
+\[![AppVeyor build status](https://ci.appveyor.com/projects/new)
 [![Travis build
 status](https://travis-ci.com/Package-Metaan-Rep/Metaan.svg?branch=master)](https://travis-ci.com/Package-Metaan-Rep/Metaan)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/Package-Metaan-Rep/Metaan?branch=master&svg=true)](https://ci.appveyor.com/project/Package-Metaan-Rep/Metaan)
 <!-- badges: end -->
 
 The goal of Metaan package is to help user to compute a Meta-Analysis of
