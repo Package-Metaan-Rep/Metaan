@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/Package-Metaan-Rep/Metaan.svg?branch=master)](https://travis-ci.com/Package-Metaan-Rep/Metaan)
 <!-- badges: end -->
 
 The goal of Metaan package is to help user to compute a Meta-Analysis of
