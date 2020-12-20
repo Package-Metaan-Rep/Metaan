@@ -38,7 +38,8 @@ Imports:
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 URL: https://github.com/Package-Metaan-Rep/Metaan
 BugReports: https://github.com/Package-Metaan-Rep/Metaan/issues
 VignetteBuilder: knitr
