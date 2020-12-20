@@ -54,7 +54,7 @@ donne$lower_ci <- as.numeric(as.character(donne$lower_ci))
 donne$dose <- as.numeric(as.character(donne$dose))
 
 alpexfix(err=donne$Risk, u=donne$upper_ci, l=donne$lower_ci, d=donne$dose,
-type = "excess", test = "FIXE", conf.level=0.95)
+type = "excess", test = "FIXED", conf.level=0.95)
 
 
 }

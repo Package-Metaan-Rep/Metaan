@@ -43,7 +43,7 @@
 #' donne$dose <- as.numeric(as.character(donne$dose))
 #'
 #' alpexfix(err=donne$Risk, u=donne$upper_ci, l=donne$lower_ci, d=donne$dose,
-#' type = "excess", test = "FIXE", conf.level=0.95)
+#' type = "excess", test = "FIXED", conf.level=0.95)
 #'
 #'
 #' @references
@@ -121,8 +121,8 @@ print.metaan.arf <- function(x, ...){
   retmat_c = cbind(x$I_square)
 
   colnames(retmat_a) <- c("Effect", "SE-Log(Effect)", "Lower CI", "Upper CI")
-  colnames(retmat_b) <- c("Cochran’s Q statistic", "Degree of Freedom", "P-Value")
-  colnames(retmat_c) <- c("Higgins’ and Thompson’s I^2 (%)")
+  colnames(retmat_b) <- c("Cochran\\'s Q statistic", "Degree of Freedom", "P-Value")
+  colnames(retmat_c) <- c("Higgins\\' and Thompson\\'s I^2 (%)")
 
   rownames(retmat_a) <- " "
   rownames(retmat_b) <- " "

@@ -129,8 +129,8 @@ print.metaan.erf <- function(x, ...){
   retmat_c = cbind(x$I_square)
 
   colnames(retmat_a) <- c("Effect", "SE Effect", "Lower CI", "Upper CI")
-  colnames(retmat_b) <- c("Cochran’s Q statistic", "Degree of Freedom", "P-Value")
-  colnames(retmat_c) <- c("Higgins’ and Thompson’s I^2 (%)")
+  colnames(retmat_b) <- c("Cochran\\'s Q statistic", "Degree of Freedom", "P-Value")
+  colnames(retmat_c) <- c("Higgins\\' and Thompson\\'s I^2 (%)")
 
   rownames(retmat_a) <- " "
   rownames(retmat_b) <- " "
