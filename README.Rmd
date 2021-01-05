@@ -129,4 +129,18 @@ exsens(study = IHD$Study,
        model = "standard")
 ```
 
+## References
 
+DerSimonian R, Laird N (1986) Meta-analysis in clinical trials. Controlled clinical trials 7:177–188.
+
+Richardson, D. B., Abalo, K., Bernier, M. O., Rage, E., Leuraud, K., Laurier, D., ... & Little, M. P. (2020). Meta-analysis of published excess relative risk estimates. Radiation and Environmental Biophysics, 1-11.
+
+Little MP, Azizova TV, Bazyka D, et al. Systematic review and meta-analysis of circulatory disease from exposure to low-level ionizing radiation and estimates of potential population mortality risks. Environ Health Perspect 2012;120(11):1503-11.
+
+
+## Contact
+
+To make a contribution, feel free to clone the rip and to share it.
+
+To report a comment you can email me [antoine.kossi@hotmail.com](antoine.kossi@hotmail.com) or you can create an
+issue on github.
