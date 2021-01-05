@@ -2,6 +2,7 @@
 
 language: R
 cache: packages
+sudo: false
 warnings_are_errors: true
 
 
@@ -11,10 +12,9 @@ os:
 
 
 r:
+  - 3.1
+  - 4.1
   - oldrel
   - release
   - devel
 
-
-ofter_success:
-  - Rscript -e 'covr::codecov(type = "all")'
