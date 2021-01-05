@@ -41,30 +41,26 @@ You can install the released version of Metaan from
 
 <!-- -->
 
-    #install.packages("devtools") # if you do not have it already
+    install.packages("devtools") # if you do not have it already
     devtools::install_github("Package-Metaan-Rep/Metaan")
-    #>          checking for file 'C:\Users\antoi\AppData\Local\Temp\RtmpE5N4Eo\remotes1a68694c1336\Package-Metaan-Rep-Metaan-03cbf34/DESCRIPTION' ...  v  checking for file 'C:\Users\antoi\AppData\Local\Temp\RtmpE5N4Eo\remotes1a68694c1336\Package-Metaan-Rep-Metaan-03cbf34/DESCRIPTION' (371ms)
-    #>       -  preparing 'Metaan': (436ms)
-    #>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   v  checking DESCRIPTION meta-information
-    #>       -  checking for LF line-endings in source and make files and shell scripts
-    #>       -  checking for empty or unneeded directories
-    #>       -  building 'Metaan_0.1.0.tar.gz'
-    #>      
-    #> 
     library(Metaan)
 
 ## Data format
 
-Format the dataset in order to have your individual studies in lines and
-the following columns : - A column with your ERR/EOR for each study - A
-column with the upper bound of the confidence interval of the ERR/EOR
-for each study - A column with the lower bound of the confidence
-interval of the ERR/EOR for each study - A column reporting the maximum
-dose from each study - A column with the study caracteristics (Authors,
-Year of publication etc.). This column is optional and can be replaced
-by numbers.
+Formate the dataset in order to have your individual studies in lines
+with the following columns :
 
-An example of the ischemic heart disease (IHD) dataset:
+-   A column with your ERR/EOR for each study
+-   A column with the upper bound of the confidence interval of the
+    ERR/EOR for each study
+-   A column with the lower bound of the confidence interval of the
+    ERR/EOR for each study
+-   A column reporting the maximum dose from each study
+-   A column with the study characteristics (Authors, Year of
+    publication etc.). This column is optional and can be replaced by
+    numbers.
+
+An example from the ischemic heart disease (IHD) dataset:
 
     data(IHD)
     print(IHD)
@@ -78,21 +74,24 @@ An example of the ischemic heart disease (IHD) dataset:
     #> 7 Vrijheid et al. 2007 -0.01   -0.590    0.690     0.50
     #> 8   Yamada et al. 2004  0.05   -0.050    0.160     4.00
 
-In this example the “Study” column contains information on the Authors
-and the date of the study. “err” is the value of the excess relative
-risk (err) reported from the study. “lower\_ci” is the value of the
-lower bound of the confidence interval of the risk reported from the
+In this example, the “Study” column contains information on the Authors
+and on the date of the study. “err” is the value expressing the excess
+relative risk (err) reported from the study. “lower\_ci” is the value of
+the lower bound of the confidence interval of the risk reported from the
 study. “upper\_ci” is the upper bound of the confidence interval of the
-risk reported from the study and the “max\_dose” column give the maximum
-dose (in millisievert mSv) reported from the study.
+risk reported from the study and the “max\_dose” column gives the
+maximum dose (in millisievert mSv) reported from the study.
 
 ## Estimate the summary effect
 
 To estimate the pooled effect from this set of studies, we will make use
-of the functions “alpexfix” or “alpexrand” for respectively estimate
-using the alternative fixed effect model or the alternative random
-effect.For more details about these two models [Richardson et
-al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w).
+of functions “alpexfix” or “alpexrand” for respectively estimate using
+the alternative fixed effect model or the alternative random effect
+model. For more details about the alternative model, I recommend you
+this interesting article [Richardson et
+al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w),
+and to know more the fixed and the random effect models, there is some
+references at the end of the tutorial.
 
 -   Estimate the fixed effect summary :
 
@@ -153,9 +152,10 @@ al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w).
     #> 
 
 These functions estimate the summary effect using the correction method
-proposed by Richarson et al.. However user can choose to use the
-standard model without correction. To do so, user can choose the
-following functions “pexfix” and “pexrand”.
+proposed by [Richardson et
+al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w).
+However user can choose to use the standard model without correction. To
+do so, user can choose the following functions “pexfix” and “pexrand”.
 
 -   Estimate the fixed effect summary using the standard model :
 
@@ -245,8 +245,7 @@ following functions “pexfix” and “pexrand”.
     exsens(study = IHD$Study,
            err=IHD$err,
              u=IHD$upper_ci,
-             l=IHD$lower_ci,
-             d=IHD$max_dose,
+             l=IHD$lower_ci, # d=NULL when using the standard model with model = "standard"
              test = "RANDOM", # you can choose test="FIXED" for the fixed effect model
            model = "standard")
     #> STANDARD RANDOM EFFECT MODEL EXCESS RISK ESTIMATE
@@ -264,6 +263,10 @@ following functions “pexfix” and “pexrand”.
 
 DerSimonian R, Laird N (1986) Meta-analysis in clinical trials.
 Controlled clinical trials 7:177–188.
+
+Larry V Hedges and Ingram Olkin (1985), Statistical methods for
+meta-analysis. ISBN 978-0-08-057065-5,
+<a href="https://doi.org/10.1016/C2009-0-03396-0" class="uri">https://doi.org/10.1016/C2009-0-03396-0</a>
 
 Richardson, D. B., Abalo, K., Bernier, M. O., Rage, E., Leuraud, K.,
 Laurier, D., … & Little, M. P. (2020). Meta-analysis of published excess

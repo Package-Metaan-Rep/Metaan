@@ -35,10 +35,10 @@ After Rtools, you have 4 different ways to install package. In this tutorial I w
 
 -  Install directly from github : 
 
-```
-#install.packages("devtools") # if you do not have it already
-#devtools::install_github("Package-Metaan-Rep/Metaan")
-#library(Metaan)
+```r
+install.packages("devtools") # if you do not have it already
+devtools::install_github("Package-Metaan-Rep/Metaan")
+library(Metaan)
 ```
 
 
@@ -47,11 +47,10 @@ Download the gzfile of the project "Metaan_0.1.0.tar.gz" on your computer and co
 
 
 
-```
-# install.packages("devtools") # if you do not have it already
-# devtools::build("Here_is_the_path_my_gzfile\\Metaan_0.1.0.tar.gz", binary = TRUE)
-#library(Metaan)
-
+```r
+install.packages("devtools") # if you do not have it already
+devtools::build("Here_is_the_path_my_gzfile\\Metaan_0.1.0.tar.gz", binary = TRUE)
+library(Metaan)
 ```
 
 
