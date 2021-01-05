@@ -55,7 +55,7 @@
 #' @export
 #'
 alpexrand <- function(err, u, l, d,
-                      type="excess", test="FIXED", conf.level=0.95){
+                      type="excess", test="RANDOM", conf.level=0.95){
 
   if (conf.level>1 & conf.level<100)
     conf.level<-conf.level/100
@@ -129,8 +129,8 @@ print.metaan.ara <- function(x, ...){
   retmat_c = cbind(x$I_square)
 
   colnames(retmat_a) <- c("Effect", "SE-Log(Effect)", "Lower CI", "Upper CI")
-  colnames(retmat_b) <- c("Cochran\\'s Q statistic", "Degree of Freedom", "P-Value")
-  colnames(retmat_c) <- c("Higgins\\' and Thompson\\'s I^2 (%)")
+  colnames(retmat_b) <- c("Cochran Q statistic", "Degree of Freedom", "P-Value")
+  colnames(retmat_c) <- c("Higgins and Thompson I^2 (%)")
 
   rownames(retmat_a) <- " "
   rownames(retmat_b) <- " "
@@ -138,7 +138,7 @@ print.metaan.ara <- function(x, ...){
 
   if(any(is.na(x$sd_tot))) retmat_a = retmat_a[,-2, drop=FALSE]
   cat("                                                     \n")
-  cat("  Alternative meta-analysis with fixed effect model  \n")
+  cat("  Alternative meta-analysis with random effect model  \n")
   cat("---------------------------------------------------- \n")
   cat("                                                     \n")
   printCoefmat(retmat_a)

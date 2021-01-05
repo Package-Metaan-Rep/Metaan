@@ -4,7 +4,7 @@
 \alias{alpexrand}
 \title{Pooled excess risk estimate using the alternative random effect model meta-analysis}
 \usage{
-alpexrand(err, u, l, d, type = "excess", test = "FIXED", conf.level = 0.95)
+alpexrand(err, u, l, d, type = "excess", test = "RANDOM", conf.level = 0.95)
 }
 \arguments{
 \item{err}{A numeric vector of the risk estimated from the individual studies}
