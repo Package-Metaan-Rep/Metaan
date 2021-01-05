@@ -146,5 +146,6 @@ Little MP, Azizova TV, Bazyka D, et al. Systematic review and meta-analysis of c
 
 To make a contribution, feel free to clone the rip and to share it.
 
-To report a comment you can email me [antoine.kossi@hotmail.com](antoine.kossi@hotmail.com) or you can create an
-issue on github.
+To report a comment you can email me [antoine.kossi@hotmail.com](antoine.kossi@hotmail.com) or you can create an issue on github.
+
+To visite the package website [Metaan](https://package-metaan-rep.github.io/Metaan/)
