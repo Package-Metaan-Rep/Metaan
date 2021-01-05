@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meta-analysis of estimates from published epidemilogical studies • Metaan</title>
+<title>Tutorials • Metaan</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Meta-analysis of estimates from published epidemilogical studies">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Tutorials">
 <meta property="og:description" content="Metaan">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Metaan_Documentation.html">Meta-analysis of estimates from published epidemilogical studies</a>
+      <a href="../articles/Metaan_Documentation.html">Tutorials</a>
     </li>
   </ul>
 </li>
@@ -80,7 +80,7 @@
 <script src="Metaan_Documentation_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Meta-analysis of estimates from published epidemilogical studies</h1>
+      <h1 data-toc-skip>Tutorials</h1>
                         <h4 class="author">Antoine Kossi D. ABALO, <a href="mailto:antoine.kossi@hotmail.com" class="email">antoine.kossi@hotmail.com</a>
 </h4>
             
@@ -94,11 +94,227 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Package-Metaan-Rep/Metaan">Metaan</a></span><span class="op">)</span></code></pre></div>
+<div id="meta-analysis-of-published-excess-relative-risk-err-or-excess-odd-ratio-eor" class="section level1">
+<h1 class="hasAnchor">
+<a href="#meta-analysis-of-published-excess-relative-risk-err-or-excess-odd-ratio-eor" class="anchor"></a>Meta-analysis of published excess relative risk (ERR) or excess odd ratio (EOR)</h1>
+<p>A meta-analysis of epidemiological study results is a summary effect estimate that is obtained by combining information from a set of study-specific estimates. In some research areas, such as radiation epidemiology, epidemiological results typically are obtained by fitting linear relative risk models, and associated likelihood-based confidence intervals are often asymmetric; consequently, reasonable estimates of variances associated with study-specific estimates of association may be difficult to infer from the standard approach based on the assumption of a Wald-type interval. This is the typical case of excess relative risk (ERR) or excess odd ratio (EOR) in radiation epidemiology.</p>
+<p>Using Metaan allow to override this issue. The process is described in the following steps:</p>
+<div id="install-the-package-from-github" class="section level2">
+<h2 class="hasAnchor">
+<a href="#install-the-package-from-github" class="anchor"></a>Install the package from github</h2>
+<p>You will need to install Rtools for your system. Rtools can be downloaded from the Cran website. For windows system users visite this link “<a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a>”.</p>
+<p>After Rtools, you have 4 different ways to install package. In this tutorial I will develop only 2 of them :</p>
+<ul>
+<li>Install directly from github :</li>
+</ul>
+<pre><code>#install.packages("devtools") # if you do not have it already
+#devtools::install_github("Package-Metaan-Rep/Metaan")
+#library(Metaan)</code></pre>
+<ul>
+<li>Install from the compressed gzfiles : Download the gzfile of the project “Metaan_0.1.0.tar.gz” on your computer and copy the path. Then run the following command :</li>
+</ul>
+<pre><code># install.packages("devtools") # if you do not have it already
+# devtools::build("Here_is_the_path_my_gzfile\\Metaan_0.1.0.tar.gz", binary = TRUE)
+#library(Metaan)
+</code></pre>
+</div>
+<div id="data-format" class="section level2">
+<h2 class="hasAnchor">
+<a href="#data-format" class="anchor"></a>Data format</h2>
+<p>Format the dataset in order to have your individual studies in lines and the following columns : - A column with your ERR/EOR for each study - A column with the upper bound of the confidence interval of the ERR/EOR for each study - A column with the lower bound of the confidence interval of the ERR/EOR for each study - A column reporting the maximum dose from each study - A column with the study caracteristics (Authors, Year of publication etc.). This column is optional and can be replaced by numbers.</p>
+<p>An example of the ischemic heart disease (IHD) dataset:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">IHD</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">IHD</span><span class="op">)</span>
+<span class="co">#&gt;                  Study   err lower_ci upper_ci max_dose</span>
+<span class="co">#&gt; 1  Azizova et al. 2010  0.12    0.051    0.186     5.92</span>
+<span class="co">#&gt; 2   Ivanov et al. 2006  0.41    0.050    0.780     0.50</span>
+<span class="co">#&gt; 3     Lane et al. 2010  0.15   -0.140    0.580     0.12</span>
+<span class="co">#&gt; 4  Laurent et al. 2010  4.10   -2.900   13.700     0.60</span>
+<span class="co">#&gt; 5 Muirhead et al. 2009  0.26   -0.050    0.610     0.40</span>
+<span class="co">#&gt; 6  Shimizu et al. 2010  0.02   -0.100    0.150     4.00</span>
+<span class="co">#&gt; 7 Vrijheid et al. 2007 -0.01   -0.590    0.690     0.50</span>
+<span class="co">#&gt; 8   Yamada et al. 2004  0.05   -0.050    0.160     4.00</span></code></pre></div>
+<p>In this example the “Study” column contains information on the Authors and the date of the study. “err” is the value of the excess relative risk (err) reported from the study. “lower_ci” is the value of the lower bound of the confidence interval of the risk reported from the study. “upper_ci” is the upper bound of the confidence interval of the risk reported from the study and the “max_dose” column give the maximum dose (in millisievert mSv) reported from the study.</p>
+</div>
+<div id="estimate-the-summary-effect" class="section level2">
+<h2 class="hasAnchor">
+<a href="#estimate-the-summary-effect" class="anchor"></a>Estimate the summary effect</h2>
+<p>To estimate the pooled effect from this set of studies, we will make use of the functions “alpexfix” or “alpexrand” for respectively estimate using the alternative fixed effect model or the alternative random effect.For more details about these two models <a href="https://link.springer.com/article/10.1007/s00411-020-00863-w">Richardson et al. 2020</a>.</p>
+<ul>
+<li>Estimate the fixed effect summary :</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/alpexfix.html">alpexfix</a></span><span class="op">(</span>err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span>,
+         d<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">max_dose</span><span class="op">)</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;  Alternative meta-analysis with fixed effect model  </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Effect SE-Log(Effect) Lower CI Upper CI</span>
+<span class="co">#&gt;     0.10           0.00     0.05     0.15</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;               Test of heterogeneity  </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Cochran Q statistic Degree of Freedom P-Value</span>
+<span class="co">#&gt;                  7.92              7.00    0.34</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Higgins and Thompson I^2 (%)</span>
+<span class="co">#&gt;                          11.64</span>
+<span class="co">#&gt; ____________________________________________________ </span>
+<span class="co">#&gt; </span></code></pre></div>
+<ul>
+<li>Estimate the random effect summary :</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/alpexrand.html">alpexrand</a></span><span class="op">(</span>err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span>,
+         d<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">max_dose</span><span class="op">)</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Alternative meta-analysis with random effect model  </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Effect SE-Log(Effect) Lower CI Upper CI</span>
+<span class="co">#&gt;     0.10           0.00     0.04     0.16</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;               Test of heterogeneity  </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Cochran Q statistic Degree of Freedom P-Value</span>
+<span class="co">#&gt;                  7.92              7.00    0.34</span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt; ---------------------------------------------------- </span>
+<span class="co">#&gt;                                                      </span>
+<span class="co">#&gt;   Higgins and Thompson I^2 (%)</span>
+<span class="co">#&gt;                          11.64</span>
+<span class="co">#&gt; ____________________________________________________ </span>
+<span class="co">#&gt; </span></code></pre></div>
+<p>These functions estimate the summary effect using the correction method proposed by Richarson et al.. However user can choose to use the standard model without correction. To do so, user can choose the following functions “pexfix” and “pexrand”.</p>
+<ul>
+<li>Estimate the fixed effect summary using the standard model :</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pexfix.html">pexfix</a></span><span class="op">(</span>err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span><span class="op">)</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Standard meta-analysis with fixed effect model </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Effect SE Effect Lower CI Upper CI</span>
+<span class="co">#&gt;     0.10      0.03     0.05     0.15</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;             Test of heterogeneity </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Cochran Q statistic Degree of Freedom P-Value</span>
+<span class="co">#&gt;                  7.52              7.00    0.38</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Higgins and Thompson I^2 (%)</span>
+<span class="co">#&gt;                           6.91</span>
+<span class="co">#&gt; _________________________________________________ </span>
+<span class="co">#&gt; </span></code></pre></div>
+<ul>
+<li>Estimate the random effect summary using the standard model :</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pexrand.html">pexrand</a></span><span class="op">(</span>err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span><span class="op">)</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Standard meta-analysis with random effect model </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Effect SE Effect Lower CI Upper CI</span>
+<span class="co">#&gt;     0.10      0.03     0.04     0.15</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;               Test of heterogeneity </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Cochran Q statistic Degree of Freedom P-Value</span>
+<span class="co">#&gt;                  7.52              7.00    0.38</span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt; ------------------------------------------------- </span>
+<span class="co">#&gt;                                                   </span>
+<span class="co">#&gt;   Higgins and Thompson I^2 (%)</span>
+<span class="co">#&gt;                           6.91</span>
+<span class="co">#&gt; _________________________________________________ </span>
+<span class="co">#&gt; </span></code></pre></div>
+</div>
+<div id="estimate-the-summary-effect-in-a-sensitivity-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#estimate-the-summary-effect-in-a-sensitivity-analysis" class="anchor"></a>Estimate the summary effect in a sensitivity analysis</h2>
+<ul>
+<li>Random effect using the alternative model</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exsens.html">exsens</a></span><span class="op">(</span>study <span class="op">=</span> <span class="va">IHD</span><span class="op">$</span><span class="va">Study</span>,
+       err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span>,
+         d<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">max_dose</span>,
+         test <span class="op">=</span> <span class="st">"RANDOM"</span>, <span class="co"># you can choose test="FIXED" for the fixed effect model</span>
+       model <span class="op">=</span> <span class="st">"alternative"</span><span class="op">)</span> <span class="co"># you can choose model = "standard" for the fixed effect model</span>
+<span class="co">#&gt; Warning in log((C * u + 1)/(C * l + 1)): production de NaN</span>
+<span class="co">#&gt; ALTERNATIVE RANDOM EFFECT MODEL EXCESS RISK ESTIMATE</span>
+<span class="co">#&gt;                  Study Effect SE(Effect) Lower CI Upper CI</span>
+<span class="co">#&gt; 1   Yamada et al. 2004   0.11       0.00     0.03     0.19</span>
+<span class="co">#&gt; 2 Vrijheid et al. 2007   0.10       0.00     0.03     0.17</span>
+<span class="co">#&gt; 3  Shimizu et al. 2010   0.11       0.00     0.05     0.17</span>
+<span class="co">#&gt; 4 Muirhead et al. 2009   0.09       0.00     0.03     0.16</span>
+<span class="co">#&gt; 5  Laurent et al. 2010   0.10       0.00     0.04     0.16</span>
+<span class="co">#&gt; 6     Lane et al. 2010    NaN        NaN      NaN      NaN</span>
+<span class="co">#&gt; 7   Ivanov et al. 2006   0.09       0.00     0.04     0.14</span>
+<span class="co">#&gt; 8  Azizova et al. 2010   0.08       0.01    -0.02     0.16</span></code></pre></div>
+<ul>
+<li>Random effect using the standard model</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exsens.html">exsens</a></span><span class="op">(</span>study <span class="op">=</span> <span class="va">IHD</span><span class="op">$</span><span class="va">Study</span>,
+       err<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">err</span>,
+         u<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">upper_ci</span>,
+         l<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">lower_ci</span>,
+         d<span class="op">=</span><span class="va">IHD</span><span class="op">$</span><span class="va">max_dose</span>,
+         test <span class="op">=</span> <span class="st">"RANDOM"</span>, <span class="co"># you can choose test="FIXED" for the fixed effect model</span>
+       model <span class="op">=</span> <span class="st">"standard"</span><span class="op">)</span>
+<span class="co">#&gt; STANDARD RANDOM EFFECT MODEL EXCESS RISK ESTIMATE</span>
+<span class="co">#&gt;                  Study Effect SE(Effect) Lower CI Upper CI</span>
+<span class="co">#&gt; 1   Yamada et al. 2004   0.11       0.04     0.04     0.18</span>
+<span class="co">#&gt; 2 Vrijheid et al. 2007   0.10       0.03     0.03     0.16</span>
+<span class="co">#&gt; 3  Shimizu et al. 2010   0.11       0.03     0.06     0.17</span>
+<span class="co">#&gt; 4 Muirhead et al. 2009   0.09       0.03     0.03     0.15</span>
+<span class="co">#&gt; 5  Laurent et al. 2010   0.10       0.03     0.04     0.15</span>
+<span class="co">#&gt; 6     Lane et al. 2010   0.09       0.03     0.03     0.16</span>
+<span class="co">#&gt; 7   Ivanov et al. 2006   0.09       0.03     0.04     0.14</span>
+<span class="co">#&gt; 8  Azizova et al. 2010   0.08       0.04    -0.01     0.16</span></code></pre></div>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<p>DerSimonian R, Laird N (1986) Meta-analysis in clinical trials. Controlled clinical trials 7:177–188.</p>
+<p>Richardson, D. B., Abalo, K., Bernier, M. O., Rage, E., Leuraud, K., Laurier, D., … &amp; Little, M. P. (2020). Meta-analysis of published excess relative risk estimates. Radiation and Environmental Biophysics, 1-11.</p>
+<p>Little MP, Azizova TV, Bazyka D, et al. Systematic review and meta-analysis of circulatory disease from exposure to low-level ionizing radiation and estimates of potential population mortality risks. Environ Health Perspect 2012;120(11):1503-11.</p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

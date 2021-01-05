@@ -43,8 +43,8 @@ You can install the released version of Metaan from
 
     #install.packages("devtools") # if you do not have it already
     devtools::install_github("Package-Metaan-Rep/Metaan")
-    #>          checking for file 'C:\Users\antoi\AppData\Local\Temp\Rtmpg9uNGi\remotes23e47e885aed\Package-Metaan-Rep-Metaan-0a52bfb/DESCRIPTION' ...  v  checking for file 'C:\Users\antoi\AppData\Local\Temp\Rtmpg9uNGi\remotes23e47e885aed\Package-Metaan-Rep-Metaan-0a52bfb/DESCRIPTION' (569ms)
-    #>       -  preparing 'Metaan': (743ms)
+    #>          checking for file 'C:\Users\antoi\AppData\Local\Temp\RtmpE5N4Eo\remotes1a68694c1336\Package-Metaan-Rep-Metaan-03cbf34/DESCRIPTION' ...  v  checking for file 'C:\Users\antoi\AppData\Local\Temp\RtmpE5N4Eo\remotes1a68694c1336\Package-Metaan-Rep-Metaan-03cbf34/DESCRIPTION' (371ms)
+    #>       -  preparing 'Metaan': (436ms)
     #>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   v  checking DESCRIPTION meta-information
     #>       -  checking for LF line-endings in source and make files and shell scripts
     #>       -  checking for empty or unneeded directories
