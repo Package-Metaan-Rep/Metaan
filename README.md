@@ -4,13 +4,15 @@
 # Metaan
 
 <!-- badges: start -->
+<!-- [![Travis build status](https://travis-ci.com/Package-Metaan-Rep/Metaan.svg?branch=master)](https://travis-ci.com/Package-Metaan-Rep/Metaan) -->
 
-[![Travis build
-status](https://travis-ci.com/Package-Metaan-Rep/Metaan.svg?branch=master)](https://travis-ci.com/Package-Metaan-Rep/Metaan)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/Package-Metaan-Rep/Metaan?branch=master&svg=true)](https://ci.appveyor.com/project/Package-Metaan-Rep/Metaan)
+
 [![Codecov test
 coverage](https://codecov.io/gh/Package-Metaan-Rep/Metaan/branch/master/graph/badge.svg)](https://codecov.io/gh/Package-Metaan-Rep/Metaan?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/Metaan)](https://CRAN.R-project.org/package=Metaan)
 <!-- badges: end -->
 
 The goal of Metaan package is to help user to compute a Meta-Analysis of
