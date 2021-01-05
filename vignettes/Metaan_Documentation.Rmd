@@ -35,10 +35,10 @@ After Rtools, you have 4 different ways to install package. In this tutorial I w
 
 -  Install directly from github : 
 
-```{r message=FALSE, warning=FALSE}
+```
 #install.packages("devtools") # if you do not have it already
-devtools::install_github("Package-Metaan-Rep/Metaan")
-library(Metaan)
+#devtools::install_github("Package-Metaan-Rep/Metaan")
+#library(Metaan)
 ```
 
 
