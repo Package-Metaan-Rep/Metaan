@@ -36,6 +36,7 @@ You can install the released version of Metaan from
 [CRAN](https://CRAN.R-project.org) with:
 
     install.packages("Metaan")
+    library(Metaan)
 
 -   Install directly from github :
 

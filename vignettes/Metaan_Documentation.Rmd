@@ -56,26 +56,27 @@ library(Metaan)
 
 ## Data format
 
-Format the dataset in order to have your individual studies in lines and the following columns :
+Formate the dataset in order to have your individual studies in lines with the following columns :
+
  - A column with your ERR/EOR for each study
  - A column with the upper bound of the confidence interval of the ERR/EOR for each study
  - A column with the lower bound of the confidence interval of the ERR/EOR for each study 
  - A column reporting the maximum dose from each study
- - A column with the study caracteristics (Authors, Year of publication etc.). This column is optional and can be replaced by numbers.
+ - A column with the study characteristics (Authors, Year of publication etc.). This column is optional and can be replaced by numbers.
 
-An example of the ischemic heart disease (IHD) dataset: 
+An example from the ischemic heart disease (IHD) dataset: 
 
 ```{r}
 data(IHD)
 print(IHD)
 ```
 
-In this example the "Study" column contains information on the Authors and the date of the study. "err" is the value of the excess relative risk (err) reported from the study. "lower_ci" is the value of the lower bound of the confidence interval of the risk reported from the study. "upper_ci" is the upper bound of the confidence interval of the risk reported from the study and the "max_dose" column give the maximum dose (in millisievert mSv) reported from the study.
+In this example, the "Study" column contains information on the Authors and on the date of the study. "err" is the value expressing the excess relative risk (err) reported from the study. "lower_ci" is the value of the lower bound of the confidence interval of the risk reported from the study. "upper_ci" is the upper bound of the confidence interval of the risk reported from the study and the "max_dose" column gives the maximum dose (in millisievert mSv) reported from the study.
 
 
 ## Estimate the summary effect
 
-To estimate the pooled effect from this set of studies, we will make use of the functions "alpexfix" or "alpexrand" for respectively estimate using the alternative fixed effect model or the alternative random effect.For more details about these two models [Richardson et al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w).
+To estimate the pooled effect from this set of studies, we will make use of functions "alpexfix" or "alpexrand" for respectively estimate using the alternative fixed effect model or the alternative random effect model. For more details about the alternative model, I recommend you this interesting article [Richardson et al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w), and to know more the fixed and the random effect models, there is some references at the end of the tutorial.
 
  - Estimate the fixed effect summary :
  
@@ -97,7 +98,7 @@ alpexrand(err=IHD$err,
          d=IHD$max_dose)
 ```
 
-These functions estimate the summary effect using the correction method proposed by Richarson et al.. However user can choose to use the standard model without correction. To do so, user can choose the following functions "pexfix" and "pexrand".
+These functions estimate the summary effect using the correction method proposed by [Richardson et al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w). However user can choose to use the standard model without correction. To do so, user can choose the following functions "pexfix" and "pexrand".
 
  - Estimate the fixed effect summary using the standard model : 
 
@@ -135,18 +136,19 @@ exsens(study = IHD$Study,
 exsens(study = IHD$Study,
        err=IHD$err,
          u=IHD$upper_ci,
-         l=IHD$lower_ci,
-         d=IHD$max_dose,
+         l=IHD$lower_ci, # d=NULL when using the standard model with model = "standard"
          test = "RANDOM", # you can choose test="FIXED" for the fixed effect model
        model = "standard")
 ```
-
 
 ## References
 
 DerSimonian R, Laird N (1986) Meta-analysis in clinical trials. Controlled clinical trials 7:177–188.
 
+Larry V Hedges and Ingram Olkin (1985), Statistical methods for meta-analysis. ISBN 978-0-08-057065-5, https://doi.org/10.1016/C2009-0-03396-0
+
 Richardson, D. B., Abalo, K., Bernier, M. O., Rage, E., Leuraud, K., Laurier, D., ... & Little, M. P. (2020). Meta-analysis of published excess relative risk estimates. Radiation and Environmental Biophysics, 1-11.
 
 Little MP, Azizova TV, Bazyka D, et al. Systematic review and meta-analysis of circulatory disease from exposure to low-level ionizing radiation and estimates of potential population mortality risks. Environ Health Perspect 2012;120(11):1503-11.
+
 
