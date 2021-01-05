@@ -9,7 +9,6 @@
 #' @param err A numeric vector of the risk estimated from the individual studies
 #' @param u A numeric vector of the upper bound of the confidence interval of the risk reported from the individual studies.
 #' @param l A numeric vector of the lower bound of the confidence interval of the risk reported from the individual studies.
-#' @param type Logical, the type of risk estimate reported. The default is excess indicating that risk estimate reported from the individual studies are excess (e.g. ERR or EOR).
 #' @param d A numeric vector of the maximum dose reported from the individual studies.
 #' @param test Logical, indicating the statistical method to be used. The user have the choice between "FIXED" for the fixed effect model, and "RANDOM" for the random effect model.
 #' @param model Logical, indicating which statistical model should be used. The user have the choice between "standard" for the standard approach, and alternative" for the alternative approach for combining the risk estimate.
@@ -46,17 +45,17 @@
 #' donne$dose <- as.numeric(as.character(donne$dose))
 #'
 #' exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-#' l=donne$lower_ci, type="excess", test = "FIXED", model = "standard")
+#' l=donne$lower_ci, test = "FIXED", model = "standard")
 #'
 #' exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-#' l=donne$lower_ci, type="excess", test = "RANDOM", model = "standard")
+#' l=donne$lower_ci, test = "RANDOM", model = "standard")
 #'
 #' exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-#' l=donne$lower_ci, d=donne$dose, type="excess", test = "FIXED",
+#' l=donne$lower_ci, d=donne$dose, test = "FIXED",
 #'  model = "alternative")
 #'
 #' exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-#' l=donne$lower_ci, d=donne$dose, type="excess", test = "RANDOM",
+#' l=donne$lower_ci, d=donne$dose, test = "RANDOM",
 #'  model = "alternative")
 #'
 #'
@@ -64,7 +63,7 @@
 #'
 #'
 exsens <- function(study, err, u, l, d=NULL, conf.level=0.95,
-                   type="excess", test = c("FIXED", "RANDOM"),
+                   test = c("FIXED", "RANDOM"),
                    model=c("standard", "alternative")){
 
   if (conf.level>1 & conf.level<100)
@@ -79,8 +78,7 @@ exsens <- function(study, err, u, l, d=NULL, conf.level=0.95,
       sensitivity <- NULL
       for (i in 1:length(study)) {
 
-        sens <- pexfix(err=err[-i], u=u[-i], l=l[-i],
-                       type="excess", test="FIXED", conf.level=conf.level)
+        sens <- pexfix(err=err[-i], u=u[-i], l=l[-i], conf.level=conf.level)
         df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
         df <- cbind(study[i], df)
         sensitivity <- rbind(df[ , 1:5], sensitivity)
@@ -106,8 +104,7 @@ exsens <- function(study, err, u, l, d=NULL, conf.level=0.95,
           sensitivity <- NULL
           for (i in 1:length(study)) {
 
-            sens <- alpexfix(err=err[-i], u=u[-i], l=l[-i], d=d[-i], type="excess",
-                             test="FIXED", conf.level=conf.level)
+            sens <- alpexfix(err=err[-i], u=u[-i], l=l[-i], d=d[-i],  conf.level=conf.level)
             df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
             df <- cbind(study[i], df)
             sensitivity <- rbind(df[ , 1:5], sensitivity)
@@ -131,8 +128,7 @@ exsens <- function(study, err, u, l, d=NULL, conf.level=0.95,
       sensitivity <- NULL
       for (i in 1:length(study)) {
 
-        sens <- pexrand(err=err[-i], u=u[-i], l=l[-i],
-                        type="excess", test="RANDOM", conf.level=conf.level)
+        sens <- pexrand(err=err[-i], u=u[-i], l=l[-i], conf.level=conf.level)
         df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
         df <- cbind(study[i], df)
         sensitivity <- rbind(df[ , 1:5], sensitivity)
@@ -159,8 +155,7 @@ exsens <- function(study, err, u, l, d=NULL, conf.level=0.95,
           sensitivity <- NULL
           for (i in 1:length(study)) {
 
-            sens <- alpexrand(err=err[-i], u=u[-i], l=l[-i], d=d[-i],
-                              type="excess", test="RANDOM", conf.level=conf.level)
+            sens <- alpexrand(err=err[-i], u=u[-i], l=l[-i], d=d[-i], conf.level=conf.level)
             df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
             df <- cbind(study[i], df)
             sensitivity <- rbind(df[ , 1:5], sensitivity)

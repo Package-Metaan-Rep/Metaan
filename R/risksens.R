@@ -11,7 +11,6 @@
 #' @param u A numeric vector of the upper bound of the confidence interval of the risk estimated from the individual studies.
 #' @param l A numeric vector of the lower bound of the confidence interval of the risk estimated from the individual studies.
 #' @param form Logical, indicating the scale of the data. If Log, then the original data are in logarithmic scale.
-#' @param type Logical, indicating the method to be used. The default is risk indicating that risk estimate model should be used.
 #' @param test Logical, indicating the statistical method to be used. The user have the choice between "FIXED" for the fixed effect model, and "RANDOM" for the random effect model.
 #' @param conf.level Coverage for confidence interval
 #'
@@ -46,21 +45,21 @@
 #' donne$ln_upper_ci <- log(donne$upper_ci)
 #'
 #' risksens(study=donne$study, rr=donne$ln_risk, u=donne$ln_upper_ci, l=donne$ln_lower_ci,
-#' type="risk", form="Log", test = "FIXED")
+#' form="Log", test = "FIXED")
 #'
 #' risksens(study=donne$study, rr=donne$ln_risk, u=donne$ln_upper_ci, l=donne$ln_lower_ci,
-#' type="risk", form="Log", test = "RANDOM")
+#' form="Log", test = "RANDOM")
 #'
 #' risksens(study=donne$study, rr=donne$Risk, u=donne$upper_ci, l=donne$lower_ci,
-#' type="risk", form="nonLog", test = "FIXED")
+#' form="nonLog", test = "FIXED")
 #'
 #' risksens(study=donne$study, rr=donne$Risk, u=donne$upper_ci, l=donne$lower_ci,
-#' type="risk", form="nonLog", test = "RANDOM")
+#' form="nonLog", test = "RANDOM")
 #'
 #' @export
 #'
 risksens <- function(study, rr, u, l, form = c("Log", "nonLog"),
-                     type="risk", test = c("FIXED", "RANDOM"), conf.level=0.95){
+                      test = c("FIXED", "RANDOM"), conf.level=0.95){
 
 
   if (conf.level>1 & conf.level<100)
@@ -76,7 +75,7 @@ risksens <- function(study, rr, u, l, form = c("Log", "nonLog"),
       for (i in 1:length(study)) {
 
         sens <- priskfix(rr=rr[-i], u=u[-i], l=l[-i], form="Log",
-                         type="risk", test="FIXED", conf.level=conf.level)
+                         conf.level=conf.level)
 
         df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
         df <- cbind(study[i], df)
@@ -100,7 +99,7 @@ risksens <- function(study, rr, u, l, form = c("Log", "nonLog"),
 
 
           sens <- priskfix(rr=rr[-i], u=u[-i], l=l[-i],
-                           form="nonLog", type="risk", test="FIXED", conf.level=conf.level)
+                           form="nonLog", conf.level=conf.level)
 
           df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
           df <- cbind(study[i], df)
@@ -126,7 +125,7 @@ risksens <- function(study, rr, u, l, form = c("Log", "nonLog"),
       for (i in 1:length(study)) {
 
         sens <- priskran(rr=rr[-i], u=u[-i], l=l[-i], form="Log",
-                         type="risk", test="RANDOM", conf.level=conf.level)
+                         conf.level=conf.level)
         df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
         df <- cbind(study[i], df)
         sensitivity <- rbind(df[ , 1:5], sensitivity)
@@ -149,7 +148,7 @@ risksens <- function(study, rr, u, l, form = c("Log", "nonLog"),
 
 
           sens <- priskran(rr=rr[-i], u=u[-i], l=l[-i],
-                           form="nonLog", type="risk", test="RANDOM", conf.level=conf.level)
+                           form="nonLog", conf.level=conf.level)
           df <- data.frame(t(matrix(unlist(sens), nrow=length(sens), byrow=T)))
           df <- cbind(study[i], df)
           sensitivity <- rbind(df[ , 1:5], sensitivity)

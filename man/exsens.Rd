@@ -11,7 +11,6 @@ exsens(
   l,
   d = NULL,
   conf.level = 0.95,
-  type = "excess",
   test = c("FIXED", "RANDOM"),
   model = c("standard", "alternative")
 )
@@ -28,8 +27,6 @@ exsens(
 \item{d}{A numeric vector of the maximum dose reported from the individual studies.}
 
 \item{conf.level}{Coverage for confidence interval}
-
-\item{type}{Logical, the type of risk estimate reported. The default is excess indicating that risk estimate reported from the individual studies are excess (e.g. ERR or EOR).}
 
 \item{test}{Logical, indicating the statistical method to be used. The user have the choice between "FIXED" for the fixed effect model, and "RANDOM" for the random effect model.}
 
@@ -72,17 +69,17 @@ donne$lower_ci <- as.numeric(as.character(donne$lower_ci))
 donne$dose <- as.numeric(as.character(donne$dose))
 
 exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-l=donne$lower_ci, type="excess", test = "FIXED", model = "standard")
+l=donne$lower_ci, test = "FIXED", model = "standard")
 
 exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-l=donne$lower_ci, type="excess", test = "RANDOM", model = "standard")
+l=donne$lower_ci, test = "RANDOM", model = "standard")
 
 exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-l=donne$lower_ci, d=donne$dose, type="excess", test = "FIXED",
+l=donne$lower_ci, d=donne$dose, test = "FIXED",
  model = "alternative")
 
 exsens(study=donne$study, err=donne$Risk, u=donne$upper_ci,
-l=donne$lower_ci, d=donne$dose, type="excess", test = "RANDOM",
+l=donne$lower_ci, d=donne$dose, test = "RANDOM",
  model = "alternative")
 
 

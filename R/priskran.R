@@ -5,8 +5,6 @@
 #' @param u A numeric vector of the upper bound of the confidence interval of the risk reported from the individual studies.
 #' @param l A numeric vector of the lower bound of the confidence interval of the risk reported from the individual studies.
 #' @param form Logical, indicating the scale of the data. If Log, then the original data are in logarithme scale.
-#' @param type Logical, indicating the method to be used. The default is risk indicating that risk estimate model should be used.
-#' @param test Logical, indicating the statistical method to be used. The default if RANDOM for the random effect model.
 #' @param conf.level Coverage for confidence interval
 #'
 #'
@@ -51,16 +49,16 @@
 #'
 #'
 #' priskran(rr=donne$Risk, u=donne$upper_ci, l=donne$lower_ci,
-#' type = "risk", test = "RANDOM", form="nonLog", conf.level=0.95)
+#'  form="nonLog", conf.level=0.95)
 #'
 #' priskran(rr=donne$ln_risk, u=donne$ln_upper_ci, l=donne$ln_lower_ci,
-#' type = "risk", test = "RANDOM", form="Log", conf.level=0.95)
+#' form="Log", conf.level=0.95)
 #'
 #' @export
 #'
 #'
 priskran <- function(rr, u, l, form = c("Log", "nonLog"),
-                     type="risk", test="RANDOM", conf.level=0.95){
+                      conf.level=0.95){
 
   if (conf.level>1 & conf.level<100)
     conf.level<-conf.level/100

@@ -6,8 +6,6 @@
 #' @param u A numeric vector of the upper bound of the confidence interval of the risk reported from the individual studies.
 #' @param l A numeric vector of the lower bound of the confidence interval of the risk reported from the individual studies.
 #' @param d A numeric vector of the maximum dose reported from the individual studies.
-#' @param type Logical indicating the method to be used. The default is "excess" indicating that excess risk estimate model should be used.
-#' @param test Logical indicating the statistical method to be used. The default is "FIXED" for the fixed effect model.
 #' @param conf.level Coverage for the confidence interval
 #'
 #'
@@ -43,7 +41,7 @@
 #' donne$dose <- as.numeric(as.character(donne$dose))
 #'
 #' alpexfix(err=donne$Risk, u=donne$upper_ci, l=donne$lower_ci, d=donne$dose,
-#' type = "excess", test = "FIXED", conf.level=0.95)
+#'  conf.level=0.95)
 #'
 #'
 #' @references
@@ -51,8 +49,7 @@
 #'
 #' @export
 #'
-alpexfix <- function(err, u, l, d,
-                     type="excess", test="FIXED", conf.level=0.95){
+alpexfix <- function(err, u, l, d, conf.level=0.95){
 
   if (conf.level>1 & conf.level<100)
     conf.level<-conf.level/100

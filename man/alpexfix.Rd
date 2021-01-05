@@ -4,7 +4,7 @@
 \alias{alpexfix}
 \title{Pooled excess risk estimate using the alternative fixed effect model meta-analysis}
 \usage{
-alpexfix(err, u, l, d, type = "excess", test = "FIXED", conf.level = 0.95)
+alpexfix(err, u, l, d, conf.level = 0.95)
 }
 \arguments{
 \item{err}{A numeric vector of the risk estimated from the individual studies}
@@ -14,10 +14,6 @@ alpexfix(err, u, l, d, type = "excess", test = "FIXED", conf.level = 0.95)
 \item{l}{A numeric vector of the lower bound of the confidence interval of the risk reported from the individual studies.}
 
 \item{d}{A numeric vector of the maximum dose reported from the individual studies.}
-
-\item{type}{Logical indicating the method to be used. The default is "excess" indicating that excess risk estimate model should be used.}
-
-\item{test}{Logical indicating the statistical method to be used. The default is "FIXED" for the fixed effect model.}
 
 \item{conf.level}{Coverage for the confidence interval}
 }
@@ -54,7 +50,7 @@ donne$lower_ci <- as.numeric(as.character(donne$lower_ci))
 donne$dose <- as.numeric(as.character(donne$dose))
 
 alpexfix(err=donne$Risk, u=donne$upper_ci, l=donne$lower_ci, d=donne$dose,
-type = "excess", test = "FIXED", conf.level=0.95)
+ conf.level=0.95)
 
 
 }

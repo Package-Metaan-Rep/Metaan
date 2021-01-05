@@ -6,8 +6,6 @@
 #' @param u A numeric vector of the upper bound of the confidence interval of the risk reported from the individual studies.
 #' @param l A numeric vector of the lower bound of the confidence interval of the risk reported from the individual studies.
 #' @param d A numeric vector of the maximum dose reported from the individual studies.
-#' @param type Logical, indicating the method to be used. The default is "excess" indicating that risk estimate model should be used.
-#' @param test Logical, indicating the statistical method to be used. The default is "RANDOM" for the random effect model.
 #' @param conf.level Coverage for confidence interval
 #'
 #'
@@ -45,7 +43,7 @@
 #' donne$dose <- as.numeric(as.character(donne$dose))
 #'
 #' alpexrand(err=donne$Risk, u=donne$upper_ci, l=donne$lower_ci, d=donne$dose,
-#' type = "excess", test = "RANDOM", conf.level=0.95)
+#' conf.level=0.95)
 #'
 #' @references
 #' DerSimonian R, Laird N (1986) Meta-analysis in clinical trials. Controlled clinical trials 7:177–188.
@@ -54,8 +52,7 @@
 #'
 #' @export
 #'
-alpexrand <- function(err, u, l, d,
-                      type="excess", test="RANDOM", conf.level=0.95){
+alpexrand <- function(err, u, l, d, conf.level=0.95){
 
   if (conf.level>1 & conf.level<100)
     conf.level<-conf.level/100

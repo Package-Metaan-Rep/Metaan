@@ -10,7 +10,6 @@ risksens(
   u,
   l,
   form = c("Log", "nonLog"),
-  type = "risk",
   test = c("FIXED", "RANDOM"),
   conf.level = 0.95
 )
@@ -25,8 +24,6 @@ risksens(
 \item{l}{A numeric vector of the lower bound of the confidence interval of the risk estimated from the individual studies.}
 
 \item{form}{Logical, indicating the scale of the data. If Log, then the original data are in logarithmic scale.}
-
-\item{type}{Logical, indicating the method to be used. The default is risk indicating that risk estimate model should be used.}
 
 \item{test}{Logical, indicating the statistical method to be used. The user have the choice between "FIXED" for the fixed effect model, and "RANDOM" for the random effect model.}
 
@@ -69,16 +66,16 @@ donne$ln_lower_ci <- log(donne$lower_ci)
 donne$ln_upper_ci <- log(donne$upper_ci)
 
 risksens(study=donne$study, rr=donne$ln_risk, u=donne$ln_upper_ci, l=donne$ln_lower_ci,
-type="risk", form="Log", test = "FIXED")
+form="Log", test = "FIXED")
 
 risksens(study=donne$study, rr=donne$ln_risk, u=donne$ln_upper_ci, l=donne$ln_lower_ci,
-type="risk", form="Log", test = "RANDOM")
+form="Log", test = "RANDOM")
 
 risksens(study=donne$study, rr=donne$Risk, u=donne$upper_ci, l=donne$lower_ci,
-type="risk", form="nonLog", test = "FIXED")
+form="nonLog", test = "FIXED")
 
 risksens(study=donne$study, rr=donne$Risk, u=donne$upper_ci, l=donne$lower_ci,
-type="risk", form="nonLog", test = "RANDOM")
+form="nonLog", test = "RANDOM")
 
 }
 \author{
