@@ -31,19 +31,19 @@ al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w)
 for the computation of excess relative risk (ERR) estimates metanalyses.
 
 ## Installation
-
+<!--
 You can install the released version of Metaan from
 [CRAN](https://CRAN.R-project.org) with:
 
     install.packages("Metaan")
     library(Metaan)
-
+ -->
 -   Install directly from github :
 
 <!-- -->
 
     install.packages("devtools") # if you do not have it already
-    devtools::install_github("Package-Metaan-Rep/Metaan")
+    devtools::install_github("https://github.com/Package-Metaan-Rep/Metaan",build_vignettes = TRUE)
     library(Metaan)
 
 ## Data format
