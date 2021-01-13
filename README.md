@@ -43,7 +43,7 @@ You can install the released version of Metaan from
 <!-- -->
 
     install.packages("devtools") # if you do not have it already
-    devtools::install_github("Package-Metaan-Rep/Metaan")
+    devtools::install_github("https://github.com/Package-Metaan-Rep/Metaan",build_vignettes = TRUE)
     library(Metaan)
 
 ## Data format
