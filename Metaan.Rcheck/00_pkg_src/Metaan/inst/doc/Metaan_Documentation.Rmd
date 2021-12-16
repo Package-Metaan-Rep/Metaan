@@ -1,0 +1,154 @@
+---
+title: "Tutorials"
+author: "Antoine Kossi D. ABALO, antoine.kossi@hotmail.com"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorials}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Metaan)
+```
+
+
+
+# Meta-analysis of published excess relative risk (ERR) or excess odd ratio (EOR)
+
+A meta-analysis of epidemiological study results is a summary effect estimate that is obtained by combining information from a set of study-specific estimates. In some research areas, such as radiation epidemiology, epidemiological results typically are obtained by fitting linear relative risk models, and associated likelihood-based confidence intervals are often asymmetric; consequently, reasonable estimates of variances associated with study-specific estimates of association may be difficult to infer from the standard approach based on the assumption of a Wald-type interval. This is the typical case of excess relative risk (ERR) or excess odd ratio (EOR) in radiation epidemiology.
+
+Using Metaan allow to override this issue. The process is described in the following steps:
+
+## Install the package from github
+
+You will need to install Rtools for your system. Rtools can be downloaded from the Cran website. For windows system users visite this link "https://cran.r-project.org/bin/windows/Rtools/".
+
+After Rtools, you have 4 different ways to install package. In this tutorial I will develop only 2 of them :
+
+-  Install directly from github : 
+
+```r
+install.packages("devtools") # if you do not have it already
+devtools::install_github("Package-Metaan-Rep/Metaan")
+library(Metaan)
+```
+
+
+- Install from the compressed gzfiles :
+Download the gzfile of the project "Metaan_0.1.0.tar.gz" on your computer and copy the path. Then run the following command :
+
+
+
+```r
+install.packages("devtools") # if you do not have it already
+devtools::build("Here_is_the_path_my_gzfile\\Metaan_0.1.0.tar.gz", binary = TRUE)
+library(Metaan)
+```
+
+
+## Data format
+
+Formate the dataset in order to have your individual studies in lines with the following columns :
+
+ - A column with your ERR/EOR for each study
+ - A column with the upper bound of the confidence interval of the ERR/EOR for each study
+ - A column with the lower bound of the confidence interval of the ERR/EOR for each study 
+ - A column reporting the maximum dose from each study
+ - A column with the study characteristics (Authors, Year of publication etc.). This column is optional and can be replaced by numbers.
+
+An example from the ischemic heart disease (IHD) dataset: 
+
+```{r}
+data(IHD)
+print(IHD)
+```
+
+In this example, the "Study" column contains information on the Authors and on the date of the study. "err" is the value expressing the excess relative risk (err) reported from the study. "lower_ci" is the value of the lower bound of the confidence interval of the risk reported from the study. "upper_ci" is the upper bound of the confidence interval of the risk reported from the study and the "max_dose" column gives the maximum dose (in millisievert mSv) reported from the study.
+
+
+## Estimate the summary effect
+
+To estimate the pooled effect from this set of studies, we will make use of functions "alpexfix" or "alpexrand" for respectively estimate using the alternative fixed effect model or the alternative random effect model. For more details about the alternative model, I recommend you this interesting article [Richardson et al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w), and to know more the fixed and the random effect models, there is some references at the end of the tutorial.
+
+ - Estimate the fixed effect summary :
+ 
+ 
+```{r}
+alpexfix(err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci,
+         d=IHD$max_dose)
+```
+
+ - Estimate the random effect summary :
+ 
+ 
+```{r}
+alpexrand(err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci,
+         d=IHD$max_dose)
+```
+
+These functions estimate the summary effect using the correction method proposed by [Richardson et al. 2020](https://link.springer.com/article/10.1007/s00411-020-00863-w). However user can choose to use the standard model without correction. To do so, user can choose the following functions "pexfix" and "pexrand".
+
+ - Estimate the fixed effect summary using the standard model : 
+
+```{r}
+pexfix(err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci)
+```
+
+
+ - Estimate the random effect summary using the standard model : 
+```{r}
+pexrand(err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci)
+```
+
+
+## Estimate the summary effect in a sensitivity analysis
+
+- Random effect using the alternative model
+
+```{r}
+exsens(study = IHD$Study,
+       err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci,
+         d=IHD$max_dose,
+         test = "RANDOM", # you can choose test="FIXED" for the fixed effect model
+       model = "alternative") # you can choose model = "standard" for the fixed effect model
+```
+
+- Random effect using the standard model
+```{r}
+exsens(study = IHD$Study,
+       err=IHD$err,
+         u=IHD$upper_ci,
+         l=IHD$lower_ci, # d=NULL when using the standard model with model = "standard"
+         test = "RANDOM", # you can choose test="FIXED" for the fixed effect model
+       model = "standard")
+```
+
+## References
+
+DerSimonian R, Laird N (1986) Meta-analysis in clinical trials. Controlled clinical trials 7:177–188.
+
+Larry V Hedges and Ingram Olkin (1985), Statistical methods for meta-analysis. ISBN 978-0-08-057065-5, https://doi.org/10.1016/C2009-0-03396-0
+
+Richardson, D. B., Abalo, K., Bernier, M. O., Rage, E., Leuraud, K., Laurier, D., ... & Little, M. P. (2020). Meta-analysis of published excess relative risk estimates. Radiation and Environmental Biophysics, 1-11.
+
+Little MP, Azizova TV, Bazyka D, et al. Systematic review and meta-analysis of circulatory disease from exposure to low-level ionizing radiation and estimates of potential population mortality risks. Environ Health Perspect 2012;120(11):1503-11.
+
+
