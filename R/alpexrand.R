@@ -63,15 +63,15 @@ alpexrand <- function(err, u, l, d, conf.level=0.95){
   A = log(C*err+1)
   sd_A = log((C*u+1)/(C*l+1))/(2*z.alpha)
   var_A = sd_A^2
-  A_tot = sum(A/var_A, na.rm = T)/sum(1/var_A, na.rm = T)
-  Q = sum(((A - A_tot)/sd_A)^2)
+  A_tot1 = sum(A/var_A, na.rm = T)/sum(1/var_A, na.rm = T)
+  Q = sum(((A - A_tot1)/sd_A)^2)
   sum_num_rand = sum(1/sd_A^4, na.rm = T)
   sum_den_rand = sum(1/var_A, na.rm = T)
   nstudies = length(A)
   deltasq = max(0, (Q - (nstudies-1)) / (sum_den_rand - (sum_num_rand/sum_den_rand)))
   sum_num = sum(A/(var_A + deltasq))
   sum_den = sum(1/(var_A + deltasq))
-  A_totf = sum_num/sum_den
+  A_tot = sum_num/sum_den
   sd_Atot = 1/sqrt(sum_den)
 
   # Compute heterogeneity
@@ -81,7 +81,7 @@ alpexrand <- function(err, u, l, d, conf.level=0.95){
 
   # Compute the result
 
-  ret = list(err_tot = round((exp(A_totf)-1) / C, 2),
+  ret = list(err_tot = round((exp(A_tot)-1) / C, 2),
              sd_tot_lnERR = round(sd_Atot, 2),
              l_tot = round((exp(A_tot - z.alpha*sd_Atot)-1)/C, 2),
              u_tot = round((exp(A_tot + z.alpha*sd_Atot)-1)/C, 2),
